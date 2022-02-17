@@ -10,11 +10,14 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
+import static com.mojang.brigadier.arguments.DoubleArgumentType.doubleArg;
 import static com.mojang.brigadier.arguments.DoubleArgumentType.getDouble;
 import static io.github.gunpowder.modelhandlers.BalanceHandler.INSTANCE;
 import static java.math.BigDecimal.valueOf;
+import static me.lucko.fabric.api.permissions.v0.Permissions.check;
 import static me.lucko.fabric.api.permissions.v0.Permissions.require;
 import static net.minecraft.command.argument.EntityArgumentType.getPlayer;
+import static net.minecraft.command.argument.EntityArgumentType.player;
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
 import static net.minecraft.util.Formatting.BOLD;
@@ -27,18 +30,18 @@ public class OpBalanceCommand {
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             dispatcher.getRoot().addChild(
                     literal("opbalance")
-                            .requires(require("moneyhack.command.opbalance"))
+                            .requires(require("moneyhack.command.opbalance", 4))
                             .then(
                                     literal("add")
-                                            .requires(require("moneyhack.command.opbalance.add"))
+                                            .requires(require("moneyhack.command.opbalance.add", 4))
                                             .then(
-                                                    argument("player", EntityArgumentType.player()).then(argument("value", DoubleArgumentType.doubleArg()).executes(OpBalanceCommand::addCommand))
+                                                    argument("player", player()).then(argument("value", doubleArg()).executes(OpBalanceCommand::addCommand))
                                             )
                             ).then(
                                     literal("set")
-                                            .requires(require("moneyhack.command.opbalance.set"))
+                                            .requires(require("moneyhack.command.opbalance.set", 4))
                                             .then(
-                                                    argument("player", EntityArgumentType.player()).then(argument("value", DoubleArgumentType.doubleArg()).executes(OpBalanceCommand::setCommand))
+                                                    argument("player", player()).then(argument("value", doubleArg()).executes(OpBalanceCommand::setCommand))
                                             )
                             )
                             .build()
