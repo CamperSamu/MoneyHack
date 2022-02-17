@@ -1,38 +1,37 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "moneyhack",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Money Hack",
+  "description": "Utility stuff for Gunpowder's Currency module.",
   "authors": [
-    "Me!"
+    "Camper_Samu"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/CamperSamu/CamperSamu",
+    "sources": "https://github.com/CamperSamu/MoneyHack"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/moneyhack/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.campersamu.moneyhack.MoneyHackInit"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "moneyhack.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.12.12",
     "fabric": "*",
     "minecraft": "1.18.x",
-    "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
+    "java": ">=17",
+    "gunpowder-currency": "*",
+    "gunpowder-base": "*"
   }
 }
