@@ -21,8 +21,8 @@ import static net.minecraft.util.Formatting.BOLD;
 import static net.minecraft.util.Formatting.GREEN;
 
 public class OpBalanceCommand {
-    private static final Text addText = new LiteralText("€ sono stati aggiunti al tuo conto!").formatted(GREEN);
-    private static final MutableText setText = new LiteralText("Il tuo conto è stato impostato a ").formatted(GREEN);
+    private static final Text addText = new LiteralText("$ got added to your balance!").formatted(GREEN);
+    private static final MutableText setText = new LiteralText("Your balance got set to ").formatted(GREEN);
     public static void init() {
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             dispatcher.getRoot().addChild(
